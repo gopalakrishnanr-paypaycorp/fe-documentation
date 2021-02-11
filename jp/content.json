@@ -60,9 +60,368 @@
       "title": "ドキュメント",
       "subtitle": "PayPay分析は、統合エラーをトラブルシューティングするためのシームレスなエクスペリエンスを提供します."
     },
-    "domore-develop-3": {
-      "title": "PayPay Lab",
-      "subtitle": "PayPay分析は、統合エラーをトラブルシューティングするためのシームレスなエクスペリエンスを提供します."
+    "ProductDocs": {
+      "docsHeadline": "アプリを呼び出して支払いを受け取るために使用できるコードを作成して、ビジネスを強化します",
+      "integration": "Integration",
+      "overview": "Overview",
+      "overview_dsc": "こちらはPayPay決済を導入する開発者向けドキュメントになります。こちらのPayment SDKを使うことで簡単に開発をできるように支援することを目的としています。こちらのPayment SDKを用いてビジネス要求を実現しつつPayPayのガイドラインに合わせた実装を行うことが可能になります。",
+      "when_to_use": "決済を使用する場合",
+      "overview_dsc_sub": "は以下のような場合に採用することをお勧めしております",
+      "title_payment_flow": "支払いフローについて",
+      "payment_flow_desc_1": "次の図は、",
+      "payment_flow_desc_2": "の統合フローを定義しています。",
+      "payment_flow_sub": "取引のステータスを確認するために、マーチャントは4〜5秒間隔でGet payment Details APIのポーリングを実装することをお勧めします。",
+      "start_title": "でははじめていきましょう",
+      "start_desc_1": "実際の開発を開始する前に、",
+      "start_desc_2": "事前作業として以下の作業が完了しているか確認ください。",
+      "start_reg": "",
+      "start_desc_point_1": "PayPay for developer でマーチャントアカウントを",
+      "start_desc_point_2": "developer dashboard より",
+      "start_desc_point_2_1": " API key",
+      "start_desc_point_2_2": "and",
+      "start_desc_point_2_3": " secret",
+      "start_desc_point_2_4": "を取得する",
+      "start_desc_point_3": "sandboxむけの",
+      "start_desc_point_3_1": "API key",
+      "start_desc_point_3_2": "と",
+      "start_desc_point_3_3": "Secret",
+      "start_desc_point_3_4": "を使って開発する",
+      "start_desc_point_4": "登録する",
+      "integrating_sub": "インストール",
+      "build_title": "クライアントをビルドする",
+      "build_desc_1": "以下に定義するようにapikeyとsecretを追加してクライアントを構築します。 APIでは、認証方式としてHMAC採用していますが、SDKで認証を処理することが可能です。 認証について詳しく知りたい場合は",
+      "build_desc_2": "を参照ください",
+      "build_desc_3": "こちら",
+      "create_qr_title": "Create a QR Code",
+      "create_qr_desc": "このフローを使用して支払いを受け取るには、まずコードを作成する必要があります。以下のパラメーターを使用してリクエストしてください。",
+      "create_qr_table": {
+        "desc_1": "加盟店から提供された一意の支払い取引ID",
+        "desc_2": "支払金額",
+        "desc_3": "固定値: 'ORDER_QR'",
+        "desc_4_1": "注文内容の説明。表示の見え方を確認する場合は,",
+        "desc_4_2": "こちら",
+        "desc_4_3": "をご確認ください",
+        "desc_5": "デフォルトではfalseとなります。売上を後で確定する場合はtrueに設定してください（事前認証および取得支払い）",
+        "desc_6": "支払い完了後に開くページ/アプリのURL。これは、Web URLまたはアプリへのディープリンクを設定することができます",
+        "desc_7": "支払いがウェブブラウザで発生している場合は「WEB_LINK」、アプリで支払いが発生している場合は「APP_DEEP_LINK」のいずれかになります。",
+        "desc_8": "トランザクションの発生元であるWebブラウザーのUser Agent"
+      },
+      "create_qr_desc_2": "userAgentパラメータが指定されている場合、モバイルデバイスでの支払い後、PayPayは購入者が使用しているブラウザへリダイレクトします。これは、javascript関数navigator.userAgentを活用することで取得することができます。 自動リダイレクトでは、以下のWebブラウザがサポートされています。",
+      "create_qr_desc_point_1": "Android - Chrome, Firefox, UC Browser",
+      "create_qr_desc_point_2": "iOS - Safari, Chrome, Firefox, UC Browser",
+      "create_qr_desc_3": "他のwebブラウザの場合、ユーザーのデフォルト設定のブラウザがトランザクション後に開かれます。",
+      "create_qr_desc_4": "SUCCESS が返却された場合APIは正しく実行されています。支払いが完了すると、response.data.statusのステータスが CREATED から COMPLETED に変わります。支払いの事前認証の場合、response.data.statusのステータスは CREATED から AUTHORIZED に変わります",
+      "create_qr_desc_5_1": "レスポンス項目について詳細に知りたい 場合には、",
+      "create_qr_desc_5_2": "[APIドキュメントガイド]",
+      "create_qr_desc_5_3": "をご確認ください。",
+      "create_qr_desc_6": "応答で受け取ったURLを開いてPayPayアプリを開く必要があります。PayPayアプリがインストールされていない場合は、ブラウザー/Webview内でWebキャッシャーページを開きます。 最初にこれをテストし、Webview設定がアプリの起動をブロックしていないことを確認してください。",
+      "delete_qr_title": "Delete a QR Code",
+      "delete_qr_desc": "生成したコードを削除したい場合こちらを利用ください。 このAPIを使用する理由として、次のことが考えられます。",
+      "delete_qr_desc_2_1": "ユーザーが注文をキャンセルした場合",
+      "delete_qr_desc_2_2": "ユーザーがPayPayアプリを開いて支払いを行わず、競合状態が発生しない目的でコードを削除する場合",
+      "delete_qr_desc_3": "処理を実施する場合には、以下のパラメーターを使用してリクエストしてください。",
+      "delete_qr_table": {
+        "desc_1": "これは、Create a Codeメソッドのレスポンス値に含まれます。"
+      },
+      "delete_qr_desc_4": "レスポンス項目で SUCCESS が返却されていれば決済は成功しています。",
+      "delete_qr_desc_5_1": "レスポンス項目について詳細に知りたい 場合には、",
+      "delete_qr_desc_5_2": "[APIドキュメントガイド]",
+      "delete_qr_desc_5_3": "をご確認ください。",
+      "get_payment_details": {
+        "title": "Get Payment Details",
+        "desc_1": "決済情報について参照をすることができます。このAPIを利用し決済が完了しているか確認してください。create a codeの支払いプロセスは非同期で行われるため、このAPIをポーリング実装する必要があります。以下のパラメーターを設定することで、決済情報を参照することができます。",
+        "table": {
+          "desc_1": "加盟店から提供された一意の支払い取引ID"
+        },
+        "desc_2": "SUCCESS が返却された場合APIは正しく実行されています。支払いが完了すると、response.data.statusのステータスが CREATED から COMPLETED に変わります。 支払いの事前認証の場合、response.data.statusのステータスは CREATED から AUTHORIZED に変わります",
+        "desc_3_1": "レスポンス項目について詳細に知りたい 場合には、",
+        "desc_3_2": "[APIドキュメントガイド]",
+        "desc_3_3": "をご確認ください。"
+      },
+      "cancel_a_payment": {
+        "title": "Cancel a payment",
+        "desc_1": "決済をキャンセルしたい場合にこちらを利用ください。通常の決済フローでは基本的には、Cancel a paymentを使いませんが以下の場合に利用ください。",
+        "desc_2": "",
+        "desc_2_1": "Create a Paymentがタイムアウトし、キャンセルを実施したい場合",
+        "desc_2_2": "Initial create payment timesout and you want to cancel the Payment",
+        "desc_2_3": "Get Payment Detailsを実行したが状態がわからない場合",
+        "desc_2_4": "Capture a payment authorizationがタイムアウトし、キャンセルを実施したい場合",
+        "desc_2_5": "Get Payment Detailsを実行したが状態がわからない場合",
+        "desc_3": "注：Cancel a paymentは、支払いが行われた翌日の00:14:59まで使用できます。 00:15 AM以降の場合、Refund a paymentを呼び出して支払いを払い戻します。",
+        "desc_4": "処理を実施する場合には、以下のパラメーターを使用してリクエストしてください。",
+        "table": {
+          "desc_1": "加盟店から提供された一意の支払い取引ID"
+        },
+        "desc_5": "SUCCESS が返却された場合APIは正しく実行されています。",
+        "desc_6_1": "レスポンス項目について詳細に知りたい 場合には、",
+        "desc_6_2": "[APIドキュメントガイド]",
+        "desc_6_3": "をご確認ください。"
+      },
+      "refund_payment": {
+        "title": "Refund payment",
+        "desc_1": "決済が正常に完了しユーザーへの商品の提供後に、返品する場合にRefund a paymentを使用ください。タイムアウトやシステム的なエラーが出て、決済処理を中止する場合には、Cancel a paymentを活用ください。主要な項目を以下に記載しますので、以下のパラメーターを使用してリクエストしてください。",
+        "table": {
+          "row_desc_1": "加盟店から提供された一意の払い戻し取引ID",
+          "row_desc_2": "PayPayが決済後に発番する取引ID",
+          "row_desc_3": "返金金額",
+          "row_desc_4": "返金理由",
+          "row_desc_5": "エポックタイムスタンプ（秒単位）"
+        },
+        "desc_2": "SUCCESS が返却された場合APIは正しく実行されています。",
+        "desc_3_1": "レスポンス項目について詳細に知りたい場合には、",
+        "desc_3_2": "[APIドキュメントガイド]",
+        "desc_3_3": "を確認ください。また現在はRefund a paymentは一度しか実施することができません"
+      },
+      "refund_status": {
+        "title": "Fetch refund status and details",
+        "desc_1": "返金処理(`Refund a payment`)がタイムアウトをした場合には、このAPIを利用ください。処理を実施する場合には、以下のパラメーターを使用してリクエストしてください。",
+        "table": {
+          "row_desc_1": "加盟店から提供された一意の返品取引ID"
+        },
+        "desc_2": "SUCCESS が返却された場合APIは正しく実行されています。",
+        "desc_3_1": "レスポンス項目について詳細に知りたい 場合には、",
+        "desc_3_2": "[APIドキュメントガイド]",
+        "desc_3_3": "をご確認ください。"
+      },
+      "capture_payment_auth": {
+        "title": "Capture a payment authorization",
+        "desc_1": "与信と売上を実装する場合、こちらをご利用ください。Create a CodeAPIでisAuthorizationをtrueとしてパラメータを設定していることを確認してください。主要な項目を以下に記載しますので、以下のパラメーターを使用してリクエストしてください。",
+        "table": {
+          "row_desc_1": "加盟店から提供された一意の返品取引ID",
+          "row_desc_2": "加盟店から提供された一意のキャプチャトランザクションID",
+          "row_desc_3": "売上金額",
+          "row_desc_4": "売上の説明",
+          "row_desc_5": "エポックタイムスタンプ（秒単位）"
+        },
+        "desc_2": "SUCCESS が返却された場合APIは正しく実行されています。",
+        "desc_3_1": "レスポンス項目について詳細に知りたい 場合には、",
+        "desc_3_2": "[APIドキュメントガイド]",
+        "desc_3_3": "をご確認ください。"
+      },
+      "revert_payment_auth": {
+        "title": "Revert a payment authorization",
+        "desc_1": "与信中の支払いに対し注文のキャンセルが発生した場合、こちらを利用ください。与信を取り消し、ユーザーに払い戻します。主要な項目を以下に記載しますので、以下のパラメーターを使用してリクエストしてください。",
+        "table": {
+          "row_desc_1": "加盟店から提供された一意の取消トランザクションID",
+          "row_desc_2": "PayPayが決済後に発番する取引ID",
+          "row_desc_3": "支払い承認を取り消す理由",
+          "row_desc_4": "エポックタイムスタンプ（秒単位）"
+        },
+        "desc_2": "SUCCESS が返却された場合APIは正しく実行されています。",
+        "desc_3_1": "レスポンス項目について詳細に知りたい 場合には、",
+        "desc_3_2": "[APIドキュメントガイド]",
+        "desc_3_3": "をご確認ください。"
+      },
+      "error_handling": {
+        "title": "Error Handling",
+        "desc_1": "PayPayは、HTTP応答ステータスコードとエラーコードを使用して、リクエストの成功または失敗を示します。以下に、詳細のエラーコードごとの実装を詳細に記載致します。",
+        "http_2xx": {
+          "title": "HTTP 2xx",
+          "desc_1": "すべて正常に動作しています。",
+          "desc_2": "リクエストされたリソース（コードなど）が作成されたことを表します。",
+          "desc_3": "リクエストを受け付けたことを意味し、後に処理されます。"
+        },
+        "http_4xx": {
+          "title": "HTTP 4xx",
+          "desc_400": "このステータスコードは、リクエスト時にセットされた情報を処理できないことによるエラーを示します。 以下のOPAエラーコードが返される可能性があります。",
+          "points_400": {
+            "INVALID_PARAMS": "INVALID_PARAMS リクエスト時にセットされた情報に無効なデータが含まれています。例）サポートされていない通貨がセットされているなど。",
+            "UNACCEPTABLE_OP": "UNACCEPTABLE_OP トランザクション制限の超過などのため、リクエストが処理できません。",
+            "NO_SUFFICIENT_FUND": "NO_SUFFICIENT_FUND 支払のための残高が不足しています。"
+          },
+          "desc_401": "このステータスコードは、認証エラーを示します。 以下のOPAエラーコードが返される可能性があります。",
+          "points_401": {
+            "UNAUTHORIZED": "UNAUTHORIZED 有効なapi keyとsecretがセットされていません。",
+            "OP_OUT_OF_SCOPE": "OP_OUT_OF_SCOPE 対象APIを呼び出す権限がありません。"
+          },
+          "desc_404": "このステータスコードは、リクエストされたリソースがシステムに存在しないことを示しています。",
+          "desc_429": "このステータスコードは、クライアントが一定期間内に送信したリクエストが多すぎたため、速度制限に達したことを示します。 リクエストの送信を遅くするか、上限引き上げをご要望の旨を弊社までご連絡ください。"
+        },
+        "http_5xx": {
+          "title": "HTTP 5xx",
+          "desc_500": "この状態コードは、PayPay側で何か問題が発生したことを示します。 下記のOPAエラーコードが返却される可能性があります。",
+          "points_500": {
+            "TRANSACTION_FAILED": "TRANSACTION_FAILED このコードは、PayPay側でトランザクションが失敗したことを意味します。 適切なバックオフ時間で、同様の新しいトランザクションの作成が可能です。",
+            "INTERNAL_SERVER_ERROR": "INTERNAL_SERVER_ERROR このコードは何かがうまくいかなかったことを意味します。 しかし、トランザクションが発生したかどうか正確にはわからないため、不明な支払ステータスとして扱う必要があります。"
+          },
+          "desc_1": "不明な支払いステータスとして扱われます。"
+        },
+        "timeout_title": "Timeout",
+        "timeout_desc": "推奨されるタイムアウト設定は、各APIで指定されています。 最も重要なのは、支払いタイムアウトAPIで、読み取りタイムアウト値を30秒以上で設定してください。タイムアウトが発生した場合、不明な支払いステータスとして扱ってください。",
+        "unknown_payment_status_title": "Handle unknown payment status",
+        "unknown_payment_status_desc": "ステータスが不明な場合、下記のいずれかの方法で対処してください:",
+        "unknown_payment_status_point_1": "取引のステータスを照会するため、照会APIを使用してください。 PayPayで取引が失敗になっている、または存在しない場合は、元取引と同様のリクエストを再度行なってください。",
+        "unknown_payment_status_point_2": "キャンセルAPIを使用してください。 キャンセルAPIが提供されている場合は、取引をキャンセルすることもできます。 キャンセルが承認された後、元取引と同様のリクエストを再度行なってください。"
+      },
+      "webPayment": {
+        "name": "ウェブペイメント",
+        "demo_desc": "デモ",
+        "description": "あなたのサービスからPayPay Webページ、またはPayPayアプリに遷移して行う決済を提供します。",
+        "webpayment_desc_1": "モバイルアプリケーションから支払いが必要な場合",
+        "webpayment_desc_2": "ウェブサイトから支払いが必要な場合",
+        "webpayment_desc_3": "スマホ、ウェブブラウザ向けの両方をお持ちの場合、統一したインタフェースにより支払いを提供することが可能です。",
+        "when_to_use": "ウェブペイメントを使用する場合",
+        "integrating_title": "ウェブペイメントを開発する"
+      },
+      "nativePayment": {
+        "name": "ネイティブ ペイメント",
+        "demo_desc": "デモ",
+        "description": "あなたのウェブサイトやアプリでワンクリック決済を提供します。※サービスのセキュリティレベルによってご利用いただけない場合がございます。",
+        "nativePayment_desc_1": "ユーザーにとってもっとも負担のない決済体験を提供する。",
+        "nativePayment_desc_2": "セキュリティを担保するための開発をすることが可能なこと。（安全な決済システムを提供するために、PayPay側で２要素認証などの導入時の要件を準備しております。サービスのセキュリティレベルによってはご利用頂けない場合がございます。）",
+        "user_authorization_title": "ユーザー認可を取得する",
+        "user_authorization_desc_1": "はじめにユーザーの認可を取得する必要があります。以下の図で認可フローを詳しく記載致します。",
+        "user_authorization_desc_2": "ユーザー認可を取得するためにはJWT を作成して頂く必要がございます。",
+        "user_authorization_desc_3": "ユーザーが認証を付与すると、認可ページの戻りパラメーターもしくはWebhookにてJWTトークンの一部としてUserAuthorizationIDを返します",
+        "unlink_user_title": "ユーザーのリンクを解除する",
+        "unlink_user_desc": "クライアントからユーザーのリンクを解除するには, 以下のパラメーターを使用してリクエストしてください",
+        "userAuth_table": {
+          "desc_1": "Items Enum: 'direct_debit' 'cashback' 'get_balance' 'quick_pay' 'continuous_payments' 'merchant_topup' 'pending_payments' 'user_notification' 'user_topup' 'user_profile' 'preauth_capture_native' 'preauth_capture_transaction' 'push_notification' 'notification_center_ob' 'notification_center_ab' 'notification_center_tl' ユーザー認可のスコープ",
+          "desc_2": "ランダムに生成された文字列。",
+          "desc_3": "Default: 'WEB_LINK' Enum: 'APP_DEEP_LINK' 'WEB_LINK' 加盟店アプリまたはウェブページにリダイレクトするかどうかを決定するパラメーター。",
+          "desc_4": "クライアントから提供されたコールバックエンドポイント。WEB_LINKの場合はHTTPSである必要があり、またドメインは事前に許可されたコールバックドメイン内になければなりません。",
+          "desc_5": "マーチャントシステムでユーザーを識別するためのID。 再照合の目的でPayPayデータベースに格納されます。",
+          "desc_6": "ユーザーの電話番号",
+          "desc_7": "ユーザーの携帯電話デバイスID。提供されている場合は、より快適なUXを提供するために、この携帯電話デバイスIDを使って、ユーザーの確認とSMSの確認を省略できます。",
+          "desc_8": "Webブラウザのユーザーエージェント。 redirectTypeが「WEB_LINK」の場合、ユーザー認可取得後に起動するWEBブラウザを指定する事が可能です。"
+        },
+        "createPayment_title": "Create a Payment",
+        "createPayment_desc": "決済処理を実施する場合には、以下のパラメーターを使用してリクエストしてください",
+        "createPayment_table": {
+          "desc_1": "加盟店から提供された一意の支払い取引",
+          "desc_2": "ユーザー認可フローで返却されたPayPay",
+          "desc_3": "支払金額",
+          "desc_4": "決済完了画面に表示されます。詳細は [こちら] を確認ください",
+          "desc_4_1": "決済完了画面に表示されます。詳細は",
+          "desc_4_2": "こちら",
+          "desc_4_3": "を確認ください"
+        },
+        "createPayment_desc_1": "レスポンス項目で SUCCESS が返却されていれば決済は成功しています。",
+        "createPayment_desc_2_1": "レスポンス項目について詳細に知りたい",
+        "createPayment_desc_2_2": "場合には、",
+        "createPayment_desc_2_3": "[APIドキュメントガイド]",
+        "createPayment_desc_2_4": "をご確認ください。",
+        "when_to_use": "ネイティブペイメントを使用する場合",
+        "integrating_title": "ネイティブペイメントを開発する"
+      },
+      "qrCode": {
+        "name": "動的ユーザスキャン",
+        "demo_desc": "デモ",
+        "description": "生成したQRコードをPayPayアプリでスキャンして行う決済を提供します。",
+        "qrCode_desc_1": "タブレットで支払いを行う場合",
+        "qrCode_desc_2": "自動販売機で支払いを行う場合",
+        "qrCode_desc_3": "テレビ画面で支払いを行う場合",
+        "qrCode_desc_4": "請求書の支払いのためのQRコードの印刷",
+        "when_to_use": "動的ユーザスキャンを使用する場合",
+        "integrating_title": "動的ユーザスキャンを開発する"
+      },
+      "appInvoke": {
+        "name": "アプリ コール",
+        "demo_desc": "デモ",
+        "description": "ユーザーの端末にPayPayアプリを呼び出して行う決済を提供します。",
+        "appInvoke_desc_1": "支払いが必要なモバイルアプリを持っている",
+        "appInvoke_desc_2": "ほとんどの取引がモバイルウェブアプリから行われる場合",
+        "when_to_use": "アプリコールを使用する場合",
+        "integrating_title": "アプリコールを開発する"
+      },
+      "continuousPayment": {
+        "name": "継続課金",
+        "demo_desc": "デモ",
+        "description": "あなたのサブスクリプション製品またはサービスへの定期的な支払いをユーザーが許可することで、定期的な支払いを行うことができます。※法人のお客様のみご利用いただけます。",
+        "continuousPayment_desc_1": "ビデオストリーミングサービス、ゲームサービスなどのサブスクリプション製品またはサービスを持っている",
+        "continuousPayment_desc_2": " 短期間でサブスクリプションサービスの決済機能が必要である",
+        "when_to_use": "継続課金を使用する場合",
+        "integrating_title": "継続課金を開発する",
+        "createPayment_title": "Create a continuous payment",
+        "createPayment_desc": "継続課金を実施する場合には、以下のパラメータを使用してリクエストしてください",
+        "createPayment_table": {
+          "desc_1": "加盟店から提供された一意の支払い取引ID",
+          "desc_2": "ユーザー認可フローで返却されたPayPayユーザー認可ID",
+          "desc_3": "支払金額",
+          "desc_4": "エポックタイムスタンプ（秒単位）",
+          "desc_5": "店舗を識別するためのID",
+          "desc_6": "端末を識別するためのID",
+          "desc_7": "加盟店発番のレシート番号",
+          "desc_8": "取引の説明",
+          "desc_9": "取引のリスト|",
+          "desc_10": "エポックタイムスタンプ（秒単位）"
+        },
+        "createPayment_desc_1": "上記のコンソール出力でSUCCESSが出力され、ステータスが'AUTHORIZED'である場合、APIの実行は成功しています。",
+        "createPayment_desc_2_1": "レスポンス項目について詳細に知りたい",
+        "createPayment_desc_2_2": "場合には、",
+        "createPayment_desc_2_3": "[APIドキュメントガイド]",
+        "createPayment_desc_2_4": "をご確認ください。",
+        "refund_payment": {
+          "desc_1": "ユーザーがサブスクリプションを解約した場合など、返金する場合にRefund a paymentを使用ください。主要な項目を以下に記載しますので、以下のパラメーターを使用してリクエストしてください。"
+        },
+        "get_payment_details": {
+          "desc_1": "決済情報を参照をすることができます。以下のパラメーターを使用してリクエストしてください。"
+        }
+      },
+      "preAuthCapture": {
+        "name": "ネイティブペイメント-出荷売上",
+        "demo_desc": "デモ",
+        "description": "ユーザーの支払い操作で与信を行い、あなたの任意のタイミングで売上を確定できます。※サービスのセキュリティレベルによってご利用いただけない場合がございます。",
+        "preAuthCapture_desc_1": "注文を受けた段階でユーザーの残高をブロックし、注文確定時に支払いを確定したい",
+        "preAuthCapture_desc_2": "タクシー配車サービス、オンデマンドサービス、eコマースウェブサイトなどのサービス",
+        "when_to_use": "ネイティブペイメント-出荷売上を使用する場合",
+        "integrating_title": "ネイティブペイメント-出荷売上を開発する",
+        "createPayment_title": "Create a Payment Authorization",
+        "createPayment_desc": "与信を実施する場合には、以下のパラメーターを使用してリクエストしてください",
+        "createPayment_table": {
+          "desc_1": "加盟店から提供された一意の支払い取引ID",
+          "desc_2": "ユーザー認可フローで返却されたPayPayユーザー認可ID",
+          "desc_3": "支払金額",
+          "desc_4": "エポックタイムスタンプ（秒単位）",
+          "desc_5": "取引の説明"
+        },
+        "createPayment_desc_1": "上記のコンソール出力でSUCCESSが出力され、ステータスが'AUTHORIZED'である場合、APIの実行は成功しています。",
+        "get_payment_details": {
+          "desc_1": "決済情報を参照をすることができます。以下のパラメーターを使用してリクエストしてください。",
+          "desc_2": "SUCCESS が返却された場合APIは正しく実行されています。与信が完了すると、response.data.statusのステータスは AUTHORIZED です。売上（Capture）が完了するとresponse.data.statusのステータスは COMPLETED に変わります。ポーリングを実施する場合にはリクエストの間隔を4〜5秒空けることを推奨します。"
+        },
+        "capture_payment_auth": {
+          "desc_1": "与信をしたら、Capture a payment authorization を使って決済を確定する必要があります。与信時と異なる金額を設定することも出来ますが、増額した場合はユーザーに同意を求める通知を送信します。この場合、Get Payment Details でStatusが'COMPLETED'に変更されるのを確認する必要があります。以下のパラメーターを使用してリクエストしてください。"
+        },
+        "refund_payment": {
+          "desc_1": "決済が正常に完了しユーザーへの商品の提供後に、返品する場合にRefund a paymentを使用ください。主要な項目を以下に記載しますので、以下のパラメーターを使用してリクエストしてください。"
+        },
+        "refund_payment_table": {
+          "row_1": "加盟店から提供された一意の払い戻し取引ID",
+          "row_2": "PayPayが決済後に発番する取引ID",
+          "row_3": "返金金額",
+          "row_4": "エポックタイムスタンプ（秒単位）",
+          "row_5": "返金理由"
+        }
+      },
+      "pendingPayment": {
+        "name": "支払リクエスト",
+        "demo_desc": "Demo of Request Money",
+        "description": "事前にユーザーの認可を取得することで、対象のユーザーに対して支払いを要求するプッシュ通知を送信することができます。ユーザーの操作から一定期間が経過していても支払いを促すことができるため、料金の回収を簡単に行うことが可能です。※法人のお客様のみご利用いただけます。",
+        "pendingPayment_desc_1": "一定期間経過後にユーザーに支払いリクエストを送る可能性がある",
+        "pendingPayment_desc_2": "ユーザーへの支払いの督促を簡潔に行いたい",
+        "when_to_use": "支払リクエストを使用する場合",
+        "integrating_title": "支払リクエストを開発する",
+        "createPayment_title": "Create a Request Money",
+        "createPayment_desc": "支払リクエストを実施する場合には、以下のパラメーターを使用してリクエストしてください",
+        "createPayment_desc_1": "SUCCESS が返却された場合APIは正しく実行されています",
+        "get_payment_details": {
+          "desc_1": "支払リクエストを行ったら、支払いのステータスをポーリングで確認する必要があります。リクエストの間隔は4〜5秒ごとに実施することをお勧めします。 このメソッドの重要なパラメーターは次のとおりです。",
+          "desc_2": "SUCCESS が返却された場合APIは正しく実行されています。APIが成功するとステータスは CREATED になります。支払リクエストをキャンセルするとステータスはCANCELEDになります。ユーザーが支払いを完了するとステータスはCOMPLETEDになります。"
+        },
+        "cancel_a_payment": {
+          "title": "Cancel a payment",
+          "desc_1": "支払リクエストを削除したい場合にこちらを利用ください。",
+          "desc_2": "このメソッドの重要なパラメーターは次のとおりです。",
+          "table": {
+            "desc_1": "加盟店から提供された一意の支払い取引ID"
+          },
+          "desc_3": "SUCCESS が返却された場合APIは正しく実行されています。",
+          "desc_4_1": "レスポンス項目について詳細に知りたい 場合には、",
+          "desc_4_2": " [APIドキュメントガイド]",
+          "desc_4_3": "をご確認ください。"
+        }
+      }
     },
     "domore-develop-4": {
       "title": "PayPay Resolve",
